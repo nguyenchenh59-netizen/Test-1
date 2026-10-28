@@ -1,0 +1,59 @@
+-- XQIN v1.0
+-- Roblox LocalScript
+-- Giao diện: Bombman | Defense | Server
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "XQIN"
+gui.ResetOnSpawn = false
+
+local frame = Instance.new("Frame")
+frame.Name = "XQINPanel"
+frame.Size = UDim2.new(0, 300, 0, 340)
+frame.Position = UDim2.new(0.5, -150, 0.5, -170)
+frame.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+frame.BorderSizePixel = 0
+frame.Parent = gui
+
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 45)
+title.BackgroundColor3 = Color3.fromRGB(35, 35, 45)
+title.Text = "XQIN"
+title.TextColor3 = Color3.new(1, 1, 1)
+title.TextSize = 23
+title.Parent = frame
+
+local tabs = {"Bombman", "Defense", "Server"}
+
+for i, name in ipairs(tabs) do
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(0, 94, 0, 35)
+    button.Position = UDim2.new(0, 6 + (i - 1) * 98, 0, 55)
+    button.BackgroundColor3 = Color3.fromRGB(55, 55, 70)
+    button.Text = name
+    button.TextColor3 = Color3.new(1, 1, 1)
+    button.TextSize = 14
+    button.Parent = frame
+end
+
+local function addOption(name, y)
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(1, -20, 0, 35)
+    button.Position = UDim2.new(0, 10, 0, y)
+    button.BackgroundColor3 = Color3.fromRGB(45, 45, 55)
+    button.Text = name
+    button.TextColor3 = Color3.new(1, 1, 1)
+    button.TextSize = 14
+    button.Parent = frame
+    return button
+end
+
+addOption("Bắt mục tiêu", 105)
+addOption("Phòng thủ", 145)
+addOption("Chống đánh bay", 185)
+addOption("Chống bị bắt", 225)
+addOption("Cài đặt Server", 265)
+
+gui.Parent = player:WaitForChild("PlayerGui")
